@@ -7,10 +7,13 @@
     <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen" />
     <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen" />
     <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print" />
+	<script src="javascripts/jquery-1.11.0.min.js"></script>
+	<script src="javascripts/lightbox.min.js"></script>
+	<link href="stylesheets/lightbox.css" rel="stylesheet" />
     <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
-    <title>Magento-exacttarget-email-customization by PrecisionDialogue</title>
+    <title>Magento ExactTarget Email Customization by PrecisionDialogue</title>
   </head>
 
   <body>
@@ -18,51 +21,51 @@
       <div class="inner">
 
         <header>
-          <h1>Magento-exacttarget-email-customization</h1>
-          <h2>Details for customizing emails for the PrecisionDialogue ExactTarget module</h2>
+          <h1>Magento ExactTarget Email Customization</h1>
+          <h2>Details for configuring and customizing emails for the PrecisionDialogue ExactTarget Magento module</h2>
         </header>
-
-        <section id="downloads" class="clearfix">
-          <a href="https://github.com/PrecisionDialogue/Magento-ExactTarget-Email-Customization/zipball/master" id="download-zip" class="button"><span>Download .zip</span></a>
-          <a href="https://github.com/PrecisionDialogue/Magento-ExactTarget-Email-Customization/tarball/master" id="download-tar-gz" class="button"><span>Download .tar.gz</span></a>
-          <a href="https://github.com/PrecisionDialogue/Magento-ExactTarget-Email-Customization" id="view-on-github" class="button"><span>View on GitHub</span></a>
-        </section>
 
         <hr>
 
         <section id="main_content">
-          <h3>
-<a name="welcome-to-github-pages" class="anchor" href="#welcome-to-github-pages"><span class="octicon octicon-link"></span></a>Welcome to GitHub Pages.</h3>
+          <h3><a name="welcome" class="anchor" href="#welcome"><span class="octicon octicon-link"></span></a>Welcome the user documentation for customizing email templates in the <a href="http://ecommerce.precisiondialogue.com/services/magento-exacttarget-integration/">Magento ExactTarget Integration</a> module.</h3>
 
-<p>This automatic page generator is the easiest way to create beautiful pages for all of your projects. Author your page content here using GitHub Flavored Markdown, select a template crafted by a designer, and publish. After your page is generated, you can check out the new branch:</p>
+			<p>These pages will detail the steps required to customize email content for transactional emails initiated in Magento and sent via ExactTarget. Due to the structure of the solution there are multiple &quot;templates&quot; and thus there are multiple locations where templates can be modified, depending on the particular modification requirements.</p>
 
-<pre><code>$ cd your_repo_root/repo_name
-$ git fetch origin
-$ git checkout gh-pages
-</code></pre>
-
-<p>If you're using the GitHub for Mac, simply sync your repository and you'll see the new branch.</p>
-
-<h3>
-<a name="designer-templates" class="anchor" href="#designer-templates"><span class="octicon octicon-link"></span></a>Designer Templates</h3>
-
-<p>We've crafted some handsome templates for you to use. Go ahead and continue to layouts to browse through them. You can easily go back to edit your page before publishing. After publishing your page, you can revisit the page generator and switch to another theme. Your Page content will be preserved if it remained markdown format.</p>
-
-<h3>
-<a name="rather-drive-stick" class="anchor" href="#rather-drive-stick"><span class="octicon octicon-link"></span></a>Rather Drive Stick?</h3>
-
-<p>If you prefer to not use the automatic generator, push a branch named <code>gh-pages</code> to your repository to create a page manually. In addition to supporting regular HTML content, GitHub Pages support Jekyll, a simple, blog aware static site generator written by our own Tom Preston-Werner. Jekyll makes it easy to create site-wide headers and footers without having to copy them across every page. It also offers intelligent blog support and other advanced templating features.</p>
-
-<h3>
-<a name="authors-and-contributors" class="anchor" href="#authors-and-contributors"><span class="octicon octicon-link"></span></a>Authors and Contributors</h3>
-
-<p>You can <a href="https://github.com/blog/821" class="user-mention">@mention</a> a GitHub username to generate a link to their profile. The resulting <code>&lt;a&gt;</code> element will link to the contributor's GitHub Profile. For example: In 2007, Chris Wanstrath (<a href="https://github.com/defunkt" class="user-mention">@defunkt</a>), PJ Hyett (<a href="https://github.com/pjhyett" class="user-mention">@pjhyett</a>), and Tom Preston-Werner (<a href="https://github.com/mojombo" class="user-mention">@mojombo</a>) founded GitHub.</p>
-
-<h3>
-<a name="support-or-contact" class="anchor" href="#support-or-contact"><span class="octicon octicon-link"></span></a>Support or Contact</h3>
-
-<p>Having trouble with Pages? Check out the documentation at <a href="http://help.github.com/pages">http://help.github.com/pages</a> or contact <a href="mailto:support@github.com">support@github.com</a> and we’ll help you sort it out.</p>
+			<h3><a name="toc" class="anchor" href="#toc"><span class="octicon octicon-link"></span></a>Table Of Contents</h3>
+			<ol>
+				<li><a href="#overview">System Overview</a></li>
+				<li><a href="#magento-options">Magento Configuration</a></li>
+				<li><a href="#et-options">ExactTarget Configuration</a></li>
+			</ol>
         </section>
+
+		<section id="overview">
+			<h3><a name="overview" class="anchor" href="#overview"><span class="octicon octicon-link"></span></a>System Overview</h3>
+			<p>The Magento ExactTarget integration enables the fulfilment of transactional by ExactTarget with their initiation being triggered by events in Magento. Because there are multiple components involved in the fulfilment process there are two places where template can be modified to change both the appearance and functionality of the emails.</p>
+			<p>The email fulfilment process consists of two portions, the first is the initiation of an email send in the Magento system. This functionality uses the existing Magento email templating functionality and is required.</p>
+			<p>An email send event is triggered in Magento and the Precision Dialogue ExactTarget extension checks to see if it is an email that is configured to be fulfilled by ExactTarget. Emails initiated in Magento are not automatically configured to be sent with ExactTarget, they must be explicitly configured to be sent from the Magento ExactTarget -> Configuration -> Email screen (see <a href="#magento-options">Magento Configuration</a> for configuration details). Regardless of configuration, Magento rendering logic is invoked to render the email template to HTML.</p>
+			<p>If the email is not configured to be sent via ExactTarget the subject and HTML content are passed back to Magento Core for sending via the system mail sending configuration.</p>
+			<p>If the email is configured to be sent via ExactTarget then the subject and HTML content are sent to ExactTarget for insertion into an existing email definition. The subject text is used as the subject of the email and the HTML text is inserted into the location where the content personalization string is located. See the <a href="#et-options">ExactTarget Configuration</a> for details.</p>
+			<p><a href="images/MagentoETEmailProcess.png" data-lightbox="ProcessDiagram" data-title="Process Diagram"/><img src="images/MagentoETEmailProcess.png" alt="Process Diagram" /></a></p>
+        </section>
+
+		<section id="magento">
+			<h3><a name="magento-options" class="anchor" href="#magento-options"><span class="octicon octicon-link"></span></a>Magento Configuration</h3>
+
+			<p>Magento configuration starts with the editing of the Magento email template that will be used as the base of the email. If changes to the template are required you can either edit the <a href="http://www.magento.cc/how-to-change-the-magento-email-templates.html" target="_blank">base template file for the email</a> that is stored on the Magento file system, or you can create a new <a href="http://go.magento.com/support/kb/entry/name/customizing-transactional-emails" target="_blank">custom email template</a> from the System -> Transactional Emails screen.</p>
+			
+			<h4>In this walkthrough we are creating a customized email template based on the <em>New Account</em> email for a specific store.</h4>
+			<p>First, we create the new transactional email template from the New Account template, give the template a unique name, and edit the subject and content. Any Magento specific templaging functionality  must be done in this email template as it is the only one that is processed with Magento.</p>
+			<p><a href="images/magento-email-template.png" data-lightbox="magento-email-template" data-title="Magento Email Template"><img src="images/magento-email-template.png" alt="Magento Email Template" /></a></p>
+			<p>Next, we configure the ExactTarget extension to use ExactTarget as the email sender for our store's New Account email. In Magento we navigate to the ExactTarget -> Configuration -> Email screen and add a new email configuration for our store/email configuration.</p>
+			<p><a href="images/magento-email-et-config-detail.png" data-lightbox="magento-email-et-config-detail" data-title="Email Configuration"><img src="images/magento-email-et-config-detail.png" alt="Email Configuration" /></a></p>
+			<p>In the configuration we set the <em>Email template code</em> to the correct value of the base email template we want to be sent through ExactTarget. For our example we are going to select the <strong>New account</strong> template. Since this is going to be a store specific email we next set the <em>Scope</em> setting to our specific store level scope. To use the same email template for all sites or stores we would set the <em>Scope</em> value to the required scope. Next, we give our email configuration a unique CustomerKey value. This needs to be unique within the configured ExactTarget account (or within the configured ExactTarget Business Unit if using an ExactTarget Enterprise 2.0 account). The Customer Key value is used to manage the ExactTarget side of the email interaction, see the <a href="#et-options">ExactTarget Congiguration</a> section for more details. If we are not going to use the default template we then need to set the <em>Custom Email Template</em> setting to the specific custom template we want to use. In our case, since we are configuring for a specific store, we will set the value to the custom transactional email template we created above (<strong>New Account Store 3</strong>). Finally, we set the <em>Asynchronous</em> value. This will determine if the ExactTarget API calls to send the configured email will be executed immediately during the email sending process or if they will be placed into a queue for later execution.</p>
+		</section>
+
+		<section id="exact-target">
+			<h3><a name="et-options" class="anchor" href="#et-options"><span class="octicon octicon-link"></span></a>ExactTarget Configuration</h3>
+		</section>
 
         <footer>
           Magento-exacttarget-email-customization is maintained by <a href="https://github.com/PrecisionDialogue">PrecisionDialogue</a><br>
